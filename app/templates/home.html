@@ -4,5 +4,41 @@
 
 {% block content %}
 <h1>Home</h1>
-<p>This is the home page, have fun!</p>
+
+<h2>Posts</h2>
+<form action="{{ url_for('main.create_post') }}" method="POST">
+    <div class="mb-3">
+        <label for="inputTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="inputTitle" name="inputTitle">
+    </div>
+    <div class="mb-3">
+        <label for="inputBody" class="form-label">Body</label>
+        <input type="text" class="form-control" id="inputBody" name="inputBody">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% for p in post %}
+<h3>Post by Users:</h3>
+<div class="card">
+    <div class="'card-body">
+        <h5 class="car-title"><a href="{{ url_for('main.single_post', id=post.id)}}">{{ p.title }}</a></h5>
+        {{ p.body }}
+    </div>
+    <div class="card-footer">
+        This post brought to you by: {{ p.user.username }} 
+    </div>
+</div>
+{% endfor %}
+
+{% for car in cars %}
+<div>
+    <p>Make: {{ car['make'] }}</p>
+    <p>Model: {{ car['model'] }}</p>
+    <p>Year: {{ car['year'] }}</p>
+    <p>Color: {{ car['color'] }}</p>
+    <p>Price: {{ car['price'] }}</p>
+</div>
+{% endfor %}
+
 {% endblock content %}
