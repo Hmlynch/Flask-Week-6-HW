@@ -30,15 +30,22 @@
     </div>
 </div>
 {% endfor %}
-
+<br>
 {% for car in cars %}
-<div>
+<!-- <div>
     <p>Make: {{ car['make'] }}</p>
     <p>Model: {{ car['model'] }}</p>
     <p>Year: {{ car['year'] }}</p>
     <p>Color: {{ car['color'] }}</p>
     <p>Price: {{ car['price'] }}</p>
-</div>
+</div> -->
+<ul class="list-group">
+    <li class="list-group-item"><h3>Make: {{ car['make'] }}</h3></li>
+    <li class="list-group-item"><h5>{{ car['model'] }}</h5></li>
+    <li class="list-group-item"><h5>{{ car['year'] }}</h5></li>
+    <li class="list-group-item"><h5>{{ car['color'] }}</h5></li>
+    <li class="list-group-item"><h5>Price: {{ car['price'] }}</h5></li>
+</ul>
 {% endfor %}
 
 {% endblock content %}
