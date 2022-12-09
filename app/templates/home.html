@@ -4,6 +4,11 @@
 
 {% block content %}
 <h1>Home</h1>
+{% if user.is_authenticated %}
+    <p>Welcom to our website {{ user.username }}</p>
+{% else %}
+    <p>Please <a href="{{ url_for('auth.login') }}">Login</a></p>
+{% endif %}
 
 <h2>Posts</h2>
 <form action="{{ url_for('main.create_post') }}" method="POST">
@@ -32,13 +37,6 @@
 {% endfor %}
 <br>
 {% for car in cars %}
-<!-- <div>
-    <p>Make: {{ car['make'] }}</p>
-    <p>Model: {{ car['model'] }}</p>
-    <p>Year: {{ car['year'] }}</p>
-    <p>Color: {{ car['color'] }}</p>
-    <p>Price: {{ car['price'] }}</p>
-</div> -->
 <ul class="list-group">
     <li class="list-group-item"><h3>Make: {{ car['make'] }}</h3></li>
     <li class="list-group-item"><h5>{{ car['model'] }}</h5></li>
